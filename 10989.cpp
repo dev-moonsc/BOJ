@@ -1,19 +1,23 @@
+/*
+카운팅 정렬:
+값의 범위가 제한된 경우 매우 빠르게 동작하는 정렬 알고리즘
+각 값의 개수를 계산하고 그 정보를 사용하여 정렬된 배열을 생성한다.
+*/
+
 #include <iostream>
-#include <vector>
 #include <algorithm>
 
 using namespace std;
 
-// 카운팅 정렬의 개념 이해
-
 int main()
 {
-    // 입출력 성능 최적화
-    ios::sync_with_stdio(false); // c스타일 표준 입출력과 동기화 해제
-    cin.tie(NULL);               // cin과 cout의 tie를 해제하여 불필요한 flush 방지
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+
+    int cnt[10001] = {0};
 
     int n, idx;
-    int cnt[10001] = {0};
     cin >> n;
 
     for (int i = 0; i < n; i++)

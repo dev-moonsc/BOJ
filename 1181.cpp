@@ -6,18 +6,14 @@
 
 using namespace std;
 
-bool compare_str(const string &a, const string &b)
+bool cmp(const string &a, const string &b)
 {
-
+    // 길이가 같다면, 사전 순으로
     if (a.length() == b.length())
-    {
-        for (int i = 0; i < a.length(); i++)
-        {
-            if (a[i] != b[i])
-                return a[i] < b[i];
-        }
-    }
+        // string 끼리의 비교 연산자는 사전 순으로 비교
+        return a < b;
 
+    // 길이가 다르다면, 짧은 순으로
     return a.length() < b.length();
 }
 
@@ -30,18 +26,14 @@ int main()
     int n;
     cin >> n;
 
-    vector<string> v;
-    string s;
+    vector<string> v(n);
     for (int i = 0; i < n; i++)
-    {
-        cin >> s;
-        v.push_back(s);
-    }
+        cin >> v[i];
 
     set<string> unique(v.begin(), v.end());
     v.assign(unique.begin(), unique.end());
 
-    sort(v.begin(), v.end(), compare_str);
+    sort(v.begin(), v.end(), cmp);
 
     for (int i = 0; i < v.size(); i++)
         cout << v[i] << '\n';

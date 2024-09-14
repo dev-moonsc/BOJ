@@ -1,10 +1,17 @@
+/*
+Sol 1) 각 자리수를 vector에 넣은 뒤 정렬
+Sol 2) 문자열 sort
+*/
+
 #include <iostream>
 #include <vector>
+#include <string>
 #include <algorithm>
 
 using namespace std;
 
-int main()
+// Sol 1) 각 자리수를 vector<int>에 넣은 뒤 정렬
+void sol_1()
 {
     int n;
     cin >> n;
@@ -20,22 +27,24 @@ int main()
 
     for (int i = 0; i < v.size(); i++)
         cout << v[i];
-    cout << endl;
+    cout << '\n';
+}
+
+// Sol 2) String sort
+void sol_2()
+{
+    string num;
+    cin >> num;
+
+    sort(num.begin(), num.end(), greater<char>());
+
+    cout << num << '\n';
+}
+
+int main()
+{
+    // sol_1();
+    sol_2();
 
     return 0;
 }
-
-// 다른 풀이 : 문자열 정렬
-// #include <iostream>
-// #include <algorithm>
-
-// using namespace std;
-// int main()
-// {
-//     ios::sync_with_stdio(0), cin.tie(0);
-//     string num;
-//     cin >> num;
-//     sort(num.begin(), num.end(), greater<char>());
-//     cout << num;
-//     return 0;
-// }

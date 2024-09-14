@@ -6,20 +6,17 @@ using namespace std;
 
 int main()
 {
-    int n, tmp;
-    vector<int> v;
+    int n;
     cin >> n;
+    vector<int> v(n);
 
     for (int i = 0; i < n; i++)
-    {
-        cin >> tmp;
-        v.push_back(tmp);
-    }
+        cin >> v[i];
 
-    sort(v.begin(), v.end());
+    sort(v.begin(), v.begin() + n);
 
     for (int i = 0; i < n; i++)
-        cout << v[i] << '\n'; // endl은 버퍼를 비우는 동작이 있어 running time이 늘어날 수 있다.
+        cout << v[i] << '\n';
 
     return 0;
 }

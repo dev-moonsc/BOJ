@@ -18,14 +18,13 @@ int main()
         cin >> tmp;
         s.insert(tmp);
     }
+
     cin >> m;
     while (m--)
     {
         cin >> tmp;
-        if (s.find(tmp) == s.end())
-            cout << 0 << ' ';
-        else
-            cout << 1 << ' ';
+
+        cout << (s.find(tmp) != s.end()) << ' ';
     }
     cout << '\n';
 

@@ -1,9 +1,18 @@
+/*
+stable sort : 값이 같은 원소의 전후 관계가 바뀌지 않는 정렬 알고리즘
+*/
+
 #include <iostream>
 #include <vector>
 #include <string>
 #include <algorithm>
 
 using namespace std;
+
+bool cmp(const pair<int, string> &a, const pair<int, string> &b)
+{
+    return a.first < b.first;
+}
 
 int main()
 {
@@ -15,17 +24,14 @@ int main()
     cin >> n;
 
     vector<pair<int, string>> users;
-    int age;
-    string name;
+    pair<int, string> user;
     for (int i = 0; i < n; i++)
     {
-        cin >> age >> name;
-        users.push_back(make_pair(age, name));
+        cin >> user.first >> user.second;
+        users.push_back(user);
     }
 
-    // 람다 함수의 활용 : 외부에 비교 함수를 따로 정의해도 되지만, 람다식으로도 사용할 수 있다.
-    stable_sort(users.begin(), users.end(), [](const pair<int, string> &a, const pair<int, string> &b)
-                { return a.first < b.first; });
+    stable_sort(users.begin(), users.end(), cmp);
 
     for (int i = 0; i < n; i++)
         cout << users[i].first << ' ' << users[i].second << '\n';
