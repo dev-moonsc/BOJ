@@ -3,29 +3,28 @@
 
 using namespace std;
 
-int k, ans = -1;
+int k, result = -1;
 vector<int> tmp;
 
-void _merge(vector<int> &a, int p, int q, int r) {
+void merge(vector<int> &A, int p, int q, int r) {
   int i = p, j = q + 1, t = 0;
 
-  while (i <= q && j <= r) tmp[t++] = (a[i] <= a[j]) ? a[i++] : a[j++];
-
-  while (i <= q) tmp[t++] = a[i++];
-  while (j <= r) tmp[t++] = a[j++];
+  while (i <= q && j <= r) tmp[t++] = (A[i] <= A[j]) ? A[i++] : A[j++];
+  while (i <= q) tmp[t++] = A[i++];
+  while (j <= r) tmp[t++] = A[j++];
 
   for (int idx = 0; idx < t; ++idx) {
-    a[p + idx] = tmp[idx];
-    if (--k == 0) ans = a[p + idx];
+    A[p + idx] = tmp[idx];
+    if (--k == 0) result = A[p + idx];
   }
 }
 
-void merge_sort(vector<int> &a, int p, int r) {
+void merge_sort(vector<int> &A, int p, int r) {
   if (p < r && k > 0) {
     int q = (p + r) / 2;
-    merge_sort(a, p, q);
-    merge_sort(a, q + 1, r);
-    _merge(a, p, q, r);
+    merge_sort(A, p, q);
+    merge_sort(A, q + 1, r);
+    merge(A, p, q, r);
   }
 }
 
@@ -36,12 +35,13 @@ int main() {
   int n;
   cin >> n >> k;
 
-  vector<int> a(n);
-  for (int &i : a) cin >> i;
+  vector<int> A(n);
+  for (int &num : A) cin >> num;
 
   tmp.resize(n);
-  merge_sort(a, 0, n - 1);
+  merge_sort(A, 0, n - 1);
 
-  cout << ans << '\n';
+  cout << result << '\n';
+
   return 0;
 }
